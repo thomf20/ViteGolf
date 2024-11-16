@@ -4,13 +4,15 @@ import { useState } from "react";
 const GolfForm = ({ addRound }) => {
     const [course, setCourse] = useState("");
     const [score, setScore] = useState("");
+    const [strokes, setStrokes] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (course.trim() && score.trim()) {
-            addRound({ course, score})
+        if (course.trim() && score.trim() && strokes.trim()) {
+            addRound({ course, score, strokes})
             setCourse("");
             setScore("");
+            setStrokes("");
         }
     }
     return (
@@ -25,7 +27,17 @@ const GolfForm = ({ addRound }) => {
             type = "number"
             placeholder = "Score"
             value = {score}
+            min= '50'
+            max='200'
             onChange={(e) => setScore(e.target.value)}
+            />
+            <input
+            type = "number"
+            placeholder = "Strokes"
+            value = {strokes}
+            min= '50'
+            max='200'
+            onChange={(e) => setStrokes(e.target.value)}
             />
             <button type="submit">Add Golf Round</button>
         </form>
