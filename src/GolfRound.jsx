@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const GolfRound = ({ round, index, onEdit, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [newCourse, setNewCourse] = useState(round.course);
   const [newScore, setNewScore] = useState(round.score);
   const [newStrokes, setNewStrokes] = useState(round.strokes); 
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if(isEditing && inputRef.current){
+      inputRef.current.focus();
+    }
+  }, [isEditing]);
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -29,6 +37,7 @@ const GolfRound = ({ round, index, onEdit, onDelete }) => {
       {isEditing ? (
         <div>
           <input
+          ref={inputRef}
             type="text"
             value={newCourse}
             onChange={(e) => setNewCourse(e.target.value)}
