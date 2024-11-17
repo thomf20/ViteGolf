@@ -10,7 +10,6 @@ const ConfirmDelete = ({ onConfirm, onCancel }) => {
   );
 };
 
-// Enkel stil för modalen
 const modalStyle = {
   position: "fixed",
   top: 0,

@@ -4,7 +4,7 @@ const GolfRound = ({ round, index, onEdit, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [newCourse, setNewCourse] = useState(round.course);
   const [newScore, setNewScore] = useState(round.score);
-  const [newStrokes, setNewStrokes] = useState(round.strokes);  // För antal slag
+  const [newStrokes, setNewStrokes] = useState(round.strokes); 
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -12,7 +12,7 @@ const GolfRound = ({ round, index, onEdit, onDelete }) => {
 
   const handleSave = () => {
     if (newCourse.trim() && newScore.trim() && newStrokes.trim()) {
-      onEdit(index, newCourse, newScore, newStrokes);  // Skicka uppdaterade värden
+      onEdit(index, newCourse, newScore, newStrokes); 
       setIsEditing(false);
     }
   };
@@ -21,7 +21,7 @@ const GolfRound = ({ round, index, onEdit, onDelete }) => {
     setIsEditing(false);
     setNewCourse(round.course);
     setNewScore(round.score);
-    setNewStrokes(round.strokes);  // Återställ till originalvärde
+    setNewStrokes(round.strokes);  
   };
 
   return (
@@ -32,19 +32,19 @@ const GolfRound = ({ round, index, onEdit, onDelete }) => {
             type="text"
             value={newCourse}
             onChange={(e) => setNewCourse(e.target.value)}
-            placeholder="Enter course name"
+            placeholder="Edit course"
           />
           <input
             type="number"
             value={newScore}
             onChange={(e) => setNewScore(e.target.value)}
-            placeholder="Enter score"
+            placeholder="Edit score"
           />
           <input
             type="number"
             value={newStrokes}
             onChange={(e) => setNewStrokes(e.target.value)}
-            placeholder="Enter strokes"
+            placeholder="Edit strokes"
           />
           <button onClick={handleSave}>Save</button>
           <button onClick={handleCancel}>Cancel</button>
